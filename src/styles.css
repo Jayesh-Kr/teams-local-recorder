@@ -1,0 +1,204 @@
+:root {
+  --pill-bg: rgba(16, 18, 24, 0.92);
+  --pill-border: rgba(255, 255, 255, 0.12);
+  --text-primary: #f3f5f8;
+  --text-muted: #9aa3b2;
+  --btn-bg: rgba(255, 255, 255, 0.06);
+  --btn-hover: rgba(255, 255, 255, 0.14);
+  --rec-red: #ef4444;
+  --rec-red-glow: rgba(239, 68, 68, 0.55);
+  --pause-amber: #f59e0b;
+  --mute-bg: rgba(239, 68, 68, 0.22);
+  --mute-border: rgba(239, 68, 68, 0.45);
+  --stop-bg: rgba(239, 68, 68, 0.18);
+  --stop-hover: rgba(239, 68, 68, 0.34);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: transparent;
+  font-family: "Segoe UI Variable", "Segoe UI", system-ui, -apple-system, sans-serif;
+  color: var(--text-primary);
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+}
+
+.pill {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+  height: 48px;
+  padding: 0 10px 0 14px;
+  background: var(--pill-bg);
+  border: 1px solid var(--pill-border);
+  border-radius: 999px;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.38),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  cursor: grab;
+}
+
+.pill:active {
+  cursor: grabbing;
+}
+
+.pill-left {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-width: 78px;
+}
+
+.status-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--text-muted);
+  flex-shrink: 0;
+  transition: background-color 0.2s ease;
+}
+
+.pill[data-status="recording"] .status-dot {
+  background: var(--rec-red);
+  box-shadow: 0 0 0 0 var(--rec-red-glow);
+  animation: pulse 1.6s infinite ease-out;
+}
+
+.pill[data-status="paused"] .status-dot {
+  background: var(--pause-amber);
+  box-shadow: 0 0 8px rgba(245, 158, 11, 0.5);
+  animation: none;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 var(--rec-red-glow);
+  }
+  70% {
+    box-shadow: 0 0 0 7px rgba(239, 68, 68, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+  }
+}
+
+.timer {
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-primary);
+}
+
+.divider {
+  width: 1px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.12);
+  flex-shrink: 0;
+}
+
+.badge {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 9px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.badge .icon {
+  width: 13px;
+  height: 13px;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+}
+
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  background: var(--btn-bg);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    transform 0.1s ease,
+    color 0.15s ease;
+}
+
+.icon-btn:hover {
+  background: var(--btn-hover);
+}
+
+.icon-btn:active {
+  transform: scale(0.94);
+}
+
+.icon-btn .icon {
+  width: 15px;
+  height: 15px;
+}
+
+.icon-btn.is-muted {
+  background: var(--mute-bg);
+  border-color: var(--mute-border);
+  color: #fca5a5;
+}
+
+.icon-btn.is-muted:hover {
+  background: rgba(239, 68, 68, 0.32);
+}
+
+.icon-btn.is-paused {
+  background: rgba(245, 158, 11, 0.2);
+  border-color: rgba(245, 158, 11, 0.45);
+  color: #fcd34d;
+}
+
+.btn-stop {
+  background: var(--stop-bg);
+  color: #f87171;
+}
+
+.btn-stop:hover {
+  background: var(--stop-hover);
+  color: #fecaca;
+}
+
+.hidden {
+  display: none;
+}

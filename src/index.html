@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Teams Local Recorder</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div id="pill" class="pill" data-status="idle" data-tauri-drag-region>
+      <div class="pill-left" data-tauri-drag-region>
+        <span id="status-dot" class="status-dot" aria-hidden="true" data-tauri-drag-region></span>
+        <span id="timer" class="timer" data-tauri-drag-region>00:00</span>
+      </div>
+
+      <div class="divider" aria-hidden="true" data-tauri-drag-region></div>
+
+      <div
+        id="participants-badge"
+        class="badge"
+        title="Participants detected in Teams"
+        data-tauri-drag-region
+      >
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+          <circle cx="9" cy="7" r="4" />
+          <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+          <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+        </svg>
+        <span id="participant-count">0</span>
+      </div>
+
+      <div class="controls">
+        <button
+          id="btn-mute"
+          class="icon-btn"
+          type="button"
+          title="Mute local mic (other participants' audio continues recording)"
+          aria-label="Toggle local microphone mute"
+        >
+          <svg id="icon-mic-on" class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z" />
+            <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+            <line x1="12" x2="12" y1="19" y2="22" />
+          </svg>
+          <svg id="icon-mic-off" class="icon hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="2" x2="22" y1="2" y2="22" />
+            <path d="M18.89 13.23A7.12 7.12 0 0 0 19 12v-2" />
+            <path d="M5 10v2a7 7 0 0 0 12 5" />
+            <path d="M15 9.34V5a3 3 0 0 0-5.68-1.33" />
+            <path d="M9 9v3a3 3 0 0 0 5.12 2.12" />
+            <line x1="12" x2="12" y1="19" y2="22" />
+          </svg>
+        </button>
+
+        <button
+          id="btn-pause"
+          class="icon-btn"
+          type="button"
+          title="Pause recording"
+          aria-label="Pause or resume recording"
+        >
+          <svg id="icon-pause" class="icon" viewBox="0 0 24 24" fill="currentColor">
+            <rect x="6" y="4" width="4" height="16" rx="1.2" />
+            <rect x="14" y="4" width="4" height="16" rx="1.2" />
+          </svg>
+          <svg id="icon-resume" class="icon hidden" viewBox="0 0 24 24" fill="currentColor">
+            <polygon points="7,4 20,12 7,20" />
+          </svg>
+        </button>
+
+        <button
+          id="btn-stop"
+          class="icon-btn btn-stop"
+          type="button"
+          title="Stop and save recording"
+          aria-label="Stop recording"
+        >
+          <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+            <rect x="6" y="6" width="12" height="12" rx="2.5" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <script type="module" src="./main.ts"></script>
+  </body>
+</html>
